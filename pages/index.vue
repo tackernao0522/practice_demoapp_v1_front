@@ -13,7 +13,7 @@
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ dateFormat(user.created_at ) }}</td>
+          <td>{{ dateFormat(user.created_at) }}</td>
         </tr>
       </tbody>
     </table>
