@@ -38,7 +38,7 @@
                 v-if="member.slack"
                 :href="member.slack"
                 target="_blank"
-                rek="noopener noreferrer"
+                rel="noopener noreferrer"
                 small
                 icon
               >
@@ -66,7 +66,7 @@
               <v-list-item-content>
                 <a
                   v-if="info.link"
-                  ref="nofollow"
+                  rel="nofollow"
                   :href="info.link"
                   target="_blank"
                   class="text-decoration-none"
