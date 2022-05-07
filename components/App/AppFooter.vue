@@ -1,11 +1,32 @@
 <template>
-  <div>
-    <v-footer absolute dark color="blank">
-      AppFooter.vue
+  <div :style="{ marginTop: `${height}px` }">
+    <v-footer absolute dark color="blank" :height="height">
+      <v-col cols="12" class="py-0">
+        <div class="text-center text-body-2">
+          &copy;{{ conpyRightYear }}
+          <strong>{{ appName }}</strong>
+        </div>
+      </v-col>
     </v-footer>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data({ $config: { appName } }) {
+    return {
+      appName,
+      height: 32
+    }
+  },
+  computed: {
+    conpyRightYear() {
+      const beinningYear = 2022
+      const thisYear = new Date().getFullYear()
+      return beinningYear < thisYear
+        ? `${beinningYear} - ${thisYear}`
+        : beinningYear
+    }
+  }
+}
 </script>
