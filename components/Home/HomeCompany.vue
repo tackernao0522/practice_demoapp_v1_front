@@ -19,6 +19,9 @@
               {{ member.name }}
             </div>
             <v-list-item-action-text>
+              {{ member.position }}
+            </v-list-item-action-text>
+            <v-list-item-action-text>
               <v-btn
                 v-if="member.twitter"
                 :href="member.twitter"
