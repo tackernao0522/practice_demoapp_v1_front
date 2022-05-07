@@ -48,7 +48,7 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    appName: process.env.App_NAME
+    appName: process.env.APP_NAME
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
