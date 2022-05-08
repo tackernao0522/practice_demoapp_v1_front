@@ -44,6 +44,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // Doc: https://www.npmjs.com/package/@nuxtjs/i18n
     '@nuxtjs/i18n'
   ],
 
@@ -76,13 +77,25 @@ export default {
       }
     }
   },
+  // Doc: https://nuxt-community.github.io/nuxt-i18n/basic-usage.html#nuxt-link
   i18n: {
+    // 対応言語
     locales: ['ja', 'en'],
+    // デフォルトで使用する言語を指定
     defaultLocale: 'ja',
+    // no_prefix => ルート名に__jaを追加しない
     strategy: 'no_prefix',
+    // Doc: https://kazupon.github.io/vue-i18n/api/#properties
     vueI18n: {
+      // 翻訳対象のキーがない場合に参照される言語
+      // "login": "ログイン"
       fallbackLocale: 'ja',
+      // true => i18nの警告を完全に表示しない(default: false)
+      // silentTranslationWarn: true,
+      // フォールバック時に警告を発生させる(default: false)
+      // true => 警告を発生させない(翻訳のキーが存在しない場合のみ警告)
       silentFallbackWarn: true,
+      // 翻訳データ
       messages: {
         ja: require('./locales/ja.json'),
         en: require('./locales/en.json')
