@@ -8,6 +8,7 @@
       </v-col>
 
       <v-card flat width="80%" max-width="320" color="transparent">
+        <!-- コンテンツを差し込むスロット -->
         <slot name="user-form-card-content" />
       </v-card>
     </v-row>
@@ -16,9 +17,12 @@
 
 <script>
 export default {
-  data({ $route, $config: { appName } }) {
+  data ({ $route, $config: { appName } }) {
     return {
       appName,
+      // $route.name => /signup = name: signup
+      // $route.name => /account/settings = name: account-settings
+      // `pages.${$route.name}` => pages.signup
       pageTitle: this.$t(`pages.${$route.name}`)
     }
   }

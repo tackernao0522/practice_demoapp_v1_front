@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <v-app>
     <before-login-app-bar />
     <v-main>
       <Nuxt />
     </v-main>
     <app-footer />
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -13,6 +13,5 @@ import AppFooter from '../components/App/AppFooter.vue'
 import BeforeLoginAppBar from '../components/BeforeLogin/BeforeLoginAppBar.vue'
 export default {
   components: { BeforeLoginAppBar, AppFooter }
-
 }
 </script>
