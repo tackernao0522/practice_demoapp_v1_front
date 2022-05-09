@@ -24,8 +24,8 @@
       </v-btn>
     </v-toolbar-items>
 
-    <app-signup-button />
-    <app-login-button />
+    <before-login-app-bar-signup-button />
+    <before-login-app-bar-login-button />
 
     <v-menu bottom nudge-left="110" nudge-width="100">
       <template #activator="{ on }">
@@ -48,12 +48,12 @@
 </template>
 
 <script>
-import AppLoginButton from '../App/AppLoginButton.vue'
 import AppLogo from '../App/AppLogo.vue'
-import AppSignupButton from '../App/AppSignupButton.vue'
 import AppTitle from '../App/AppTitle.vue'
+import BeforeLoginAppBarLoginButton from '../BeforeLogin/BeforeLoginAppBarLoginButton.vue'
+import BeforeLoginAppBarSignupButton from '../BeforeLogin/BeforeLoginAppBarSignupButton.vue'
 export default {
-  components: { AppLogo, AppSignupButton, AppLoginButton, AppTitle },
+  components: { AppLogo, AppTitle, BeforeLoginAppBarSignupButton, BeforeLoginAppBarLoginButton },
   props: {
     menus: {
       type: Array,
