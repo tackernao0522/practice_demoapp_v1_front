@@ -1,6 +1,6 @@
 <template>
   <v-btn outlined text class="ml-2 font-weight-bold" color="appblue" to="/signup">
-    {{ $t('pages.signup') }}
+    {{ $my.pageTitle('signup') }}
   </v-btn>
 </template>
 
