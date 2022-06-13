@@ -6,17 +6,23 @@
     :mobile-breakpoint="mobileBreakpoint"
   >
     <v-list>
-      <template v-if="isBreakpoint">
+      <!-- close button -->
+      <!-- 修正 -->
+      <template v-if="isBreakpointLessThan">
         <v-list-item @click="$emit('update:drawer', false)">
-          <v-list-tiem-content class="text-center">
-            <v-list-item-action-text class="d-flex justify-center align-center">
+          <v-list-item-content class="text-center">
+            <v-list-item-acttion-text
+              class="d-flex justify-center align-center"
+            >
               <v-icon> mdi-chevron-double-left </v-icon>
-            </v-list-item-action-text>
-          </v-list-tiem-content>
+              閉じる
+            </v-list-item-acttion-text>
+          </v-list-item-content>
         </v-list-item>
         <v-divider />
       </template>
 
+      <!-- nav menus -->
       <v-list-item
         v-for="(nav, i) in navMenus"
         :key="`nav-${i}`"
@@ -66,8 +72,8 @@ export default {
         return this.$emit('update:drawer', newVal)
       }
     },
-    isBreakpoint() {
-      const windowWidth = this.$vuetify.isBreakpoint.width
+    isBreakpointLessThan() {
+      const windowWidth = this.$vuetify.breakpoint.width
       return this.mobileBreakpoint > windowWidth
     }
   }
