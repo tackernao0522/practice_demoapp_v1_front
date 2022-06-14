@@ -23,7 +23,8 @@
         "dashboard": "ダッシュボード",
         "layouts": "レイアウト",
         "pages": "ページ",
-        "components": "設定",
+        "components": "コンポーネント",
+        "settings": "設定",
         "help": "ヘルプ"
       }
     }
