@@ -1,10 +1,5 @@
 <template>
-  <v-menu
-    app
-    offset-x
-    offset-y
-    max-width="200"
-  >
+  <v-menu app offset-x offset-y max-width="200">
     <template #activator="{ on }">
       <v-btn icon v-on="on">
         <v-icon>mdi-account-circle</v-icon>
@@ -26,21 +21,15 @@
       <v-subheader>アカウント</v-subheader>
 
       <template v-for="(menu, i) in menus">
-        <v-divider
-          v-if="menu.divider"
-          :key="`menu-divider-${i}`"
-        />
+        <v-divider v-if="menu.divider" :key="`menu-divider-${i}`" />
 
-        <v-list-item
-          :key="`menu-list-${i}`"
-          :to="{ name: menu.name }"
-        >
+        <v-list-item :key="`menu-list-${i}`" :to="{ name: menu.name }">
           <v-list-item-icon class="mr-2">
             <v-icon size="22" v-text="menu.icon" />
           </v-list-item-icon>
-          <v-list-title>
+          <v-list-item-title>
             {{ $my.pageTitle(menu.name) }}
-          </v-list-title>
+          </v-list-item-title>
         </v-list-item>
       </template>
     </v-list>
