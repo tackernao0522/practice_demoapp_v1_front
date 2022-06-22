@@ -2,8 +2,8 @@
   <user-form-card>
     <template #user-form-card-content>
       <v-form ref="form" v-model="isValid" @submit.prevent="login">
-        <user-form-email :email.sync="params.user.email" />
-        <user-form-password :password.sync="params.user.password" />
+        <user-form-email :email.sync="params.auth.email" />
+        <user-form-password :password.sync="params.auth.password" />
         <v-card-actions>
           <nuxt-link to="#" class="body-2 text-decoration-none">
             パスワードを忘れた？
@@ -40,14 +40,41 @@ export default {
       name: '',
       isValid: false,
       loading: false,
-      params: { user: { email: '', password: '' } },
+      params: { auth: { email: 'user0@example.com', password: 'password' } },
       redirectPath: $store.state.loggedIn.homePath
     }
   },
   methods: {
-    login() {
+    async login() {
       this.loading = true
+      if (this.isValid) {
+        await this.$axios
+          .$post('/api/v1/auth_token', this.params)
+          .then(response => this.authSuccessful(response))
+          .catch(error => this.authFailure(error))
+      }
+      this.loading = false
       this.$router.push(this.redirectPath)
+    },
+    authSuccessful(response) {
+      // eslint-disable-next-line no-console
+      console.log('authSuccessful', response)
+      this.$auth.login(response)
+      // eslint-disable-next-line no-console
+      console.log('token', this.$auth.token)
+      // eslint-disable-next-line no-console
+      console.log('expires', this.$auth.expires)
+      // eslint-disable-next-line no-console
+      console.log('payload', this.$auth.payload)
+      // eslint-disable-next-line no-console
+      console.log('user', this.$auth.user)
+      this.$router.push(this.redirectPath)
+    },
+    authFailure({ response }) {
+      if (response && response.status === 404) {
+        // TODO トースター出力
+      }
+      // TODO エラー処理
     }
   }
 }

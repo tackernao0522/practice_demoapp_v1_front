@@ -26,6 +26,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    'plugins/auth',
     'plugins/axios',
     'plugins/my-inject'
   ],
@@ -56,7 +57,10 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // 環境変数API_URLが優先される
-    // baseURL: '/'
+    // baseURL: 'http://localhost:3000'
+    // クロスドメインで認証情報を共有する
+    // DOC: https://axios.nuxtjs.org/options/#credentials
+    credentials: true
   },
   vuetify: {
     // カスタムCSSファイルパス
