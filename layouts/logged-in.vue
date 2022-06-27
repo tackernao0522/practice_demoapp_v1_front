@@ -12,7 +12,7 @@
 import AppFooter from '../components/App/AppFooter.vue'
 import LoggedInAppBar from '../components/loggedIn/LoggedInAppBar.vue'
 export default {
-  components: { LoggedInAppBar, AppFooter }
-
+  components: { LoggedInAppBar, AppFooter },
+  middleware: ['authentication']
 }
 </script>
