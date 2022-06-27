@@ -54,7 +54,6 @@ export default {
           .catch(error => this.authFailure(error))
       }
       this.loading = false
-      this.$router.push(this.redirectPath)
     },
     authSuccessful(response) {
       // eslint-disable-next-line no-console
@@ -73,6 +72,8 @@ export default {
     authFailure({ response }) {
       if (response && response.status === 404) {
         // TODO トースター出力
+        const msg = 'ユーザーが見つかりません😢'
+        return this.$store.dispatch('getToast', { msg })
       }
       // TODO エラー処理
     }
