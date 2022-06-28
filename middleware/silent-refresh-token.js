@@ -8,16 +8,20 @@ export default async ({ $auth, $axios, store, route, redirect, isDev }) => {
       .$post('/api/v1/auth_token/refresh')
       .then(response => $auth.login(response))
       .catch(() => {
-        const msg = 'セッションの有効期限が切れました。' + 'もう一度ログインしてください'
-        // TODO test
-        console.log(msg)
-        // TODO トースター出力
-        store.dispatch('getToast', { msg })
-        // TODO アクセスルート記憶
-        // store.dispatch('getRememberPath', route)
-        // Vuexの初期化(セッションはサーバーで作事済み)
+        // Vuexの初期化(セッションはサーバーで削除済み)
         $auth.resetVuex()
-        return redirect('/login')
+        if (route.name === 'logout') {
+          return redirect('/')
+        } else {
+          const msg =
+            'セッションの有効期限が切れました。' +
+            'もう一度ログインしてください。'
+          // トースター出力
+          store.dispatch('getToast', { msg })
+          // アクセスルート記憶
+          store.dispatch('getRememberPath', route)
+          return redirect('/login')
+        }
       })
   }
 }
