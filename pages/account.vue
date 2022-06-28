@@ -10,7 +10,7 @@
       <v-icon left>
         mdi-chevron-double-left
       </v-icon>
-      {{ $my.pageTitle(dashboradPath) }}に戻る
+      {{ $my.pageTitle(dashboardPath) }}に戻る
     </v-btn>
     <nuxt-child />
   </v-container>
@@ -19,7 +19,9 @@
 <script>
 export default {
   layout: 'logged-in',
+  // falseを返すページのアクセスを制限する
   validate({ route }) {
+    // account
     return route.name !== 'account'
   },
   data() {

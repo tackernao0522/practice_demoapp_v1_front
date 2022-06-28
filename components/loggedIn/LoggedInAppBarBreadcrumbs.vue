@@ -20,6 +20,7 @@ export default {
       const currentRouteName = this.$route.name
       const items = [{ text: this.$my.pageTitle(currentRouteName) }]
       const currentProject = this.$store.state.project.current
+      // breakpoint.xs => 600未満の場合にtrueを返す
       if (
         currentProject &&
         currentRouteName.match(/project/) &&
@@ -33,6 +34,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
